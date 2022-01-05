@@ -144,6 +144,11 @@
   .icon-success {
     color: rgb(29, 153, 255);
   }
+
+  .container {
+    border: 1px solid black;
+    padding: 5px
+  }
   
   /* CARDS */
   .card {

@@ -18,14 +18,50 @@
     </header>
 
     <main class="flex-row justify-space-between">
-        <div class="col-12 col-md-4"></div>
+        <div class="col-12 col-md-4">
             <div class="card">
                 <h3 class="card header text-upper-case">Search by City</h3>
                 <form id="city-form" class="card-body">
                     <label class="form-label" for="city">City</label>
                     <input name="city" id="city" type="text" autofocus="true" class="form-input" />
-                    <button type="submit" class="btn">Get Weather</button>
+                    <button type="submit" class="btn" id="btn">Get Weather</button>
                 </form>
+            </div>
+        </div>
+        <div class="col-12 col-md-8">
+            <div class="container">
+                <h3 id="current-city">Current City</h3>
+                <h3 id="current-temperature">Temperature</h3>
+                <h3 id="current-humidity">Humidity</h3>
+                <h3 id="current-UV-Index">UV Index</h3>
+
+            </div>
+            <div class="five-day-container row">
+                <div class="date col-2">
+                    <h3 id="Temperature">Temperature</h3>
+                    <h3 id="Wind">Wind</h3>
+                    <h3 id="Humidity">Humidity</h3>
+                </div>
+                <div class="date col-2">
+                    <h3 id="Temperature">Temperature</h3>
+                    <h3 id="Wind">Wind</h3>
+                    <h3 id="Humidity">Humidity</h3>
+                </div>
+                <div class="date col-2">
+                    <h3 id="Temperature">Temperature</h3>
+                    <h3 id="Wind">Wind</h3>
+                    <h3 id="Humidity">Humidity</h3>
+                </div>
+                <div class="date col-2">
+                    <h3 id="Temperature">Temperature</h3>
+                    <h3 id="Wind">Wind</h3>
+                    <h3 id="Humidity">Humidity</h3>
+                </div>
+                <div class="date col-2">
+                    <h3 id="Temperature">Temperature</h3>
+                    <h3 id="Wind">Wind</h3>
+                    <h3 id="Humidity">Humidity</h3>
+                </div>
             </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
