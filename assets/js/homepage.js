@@ -6,9 +6,7 @@ var currentCity = document.getElementById("current-city");
 var currentTemperature = document.getElementById("current-temperature");
 var currentHumidity = document.getElementById("current-humidity");
 var currentUVI = document.getElementById("current-UVI");
-var dailyTemperature = document.getElementById("Daily-Temeprature");
-var dailyWind = document.getElementById("Daily-Wind");
-var dailyHumidity = document.getElementById("Daily-Humidity");
+
 
 function getUserRepos(city) {
     console.log("getUserRepos");
@@ -31,5 +29,10 @@ function searchForm (event) {
         getUserRepos(inputSearch)
 }
 
+$(".btn").on("click", function (event) {
+    var innerText = event.target.parentElement.childNodes[3].innerText
+    var eventId = event.target.parentElement.childNodes[3].id
+    localStorage.setItem(eventId, JSON.stringify(innerText));
+  });
 
 submitButton.addEventListener("click", searchForm);
