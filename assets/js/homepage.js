@@ -7,6 +7,10 @@ var currentTemperature = document.getElementById("current-temperature");
 var currentHumidity = document.getElementById("current-humidity");
 var currentUVI = document.getElementById("current-UVI");
 
+if (localStorage.getItem("current-city")) {
+    currentCity.textContent = localStorage.getItem("current-city");
+}
+
 
 function getUserRepos(city) {
     console.log("getUserRepos");
