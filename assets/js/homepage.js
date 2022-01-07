@@ -7,14 +7,17 @@ var currentTemperature = document.getElementById("current-temperature");
 var currentHumidity = document.getElementById("current-humidity");
 var currentUVI = document.getElementById("current-UVI");
 
+
+
+
 if (localStorage.getItem("current-city")) {
     currentCity.textContent = localStorage.getItem("current-city");
 }
 
 
-function getUserRepos(city) {
+function getUserRepos() {
     console.log("getUserRepos");
-    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=41.85&lon=-87.65&exclude=alert" + city + "&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
+    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=41.85&lon=-87.65&exclude=alert&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
         .then(response=> response.json())
         .then(data=> {
             console.log(data);
@@ -24,6 +27,10 @@ function getUserRepos(city) {
             currentUVI.textContent = data.current.uvi
         })
 }
+getUserRepos();
+
+
+
 
 function searchForm (event) {
     event.preventDefault();
