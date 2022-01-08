@@ -9,6 +9,18 @@ var currentUVI = document.getElementById("current-UVI");
 var dailyTemperature = document.getElementById("daily-temperature");
 var dailyWind = document.getElementById("daily-wind");
 var dailyHumidity = document.getElementById("daily-humidity");
+var dayTwoTemperature = document.getElementById("day-two-temperature");
+var dayTwoWind = document.getElementById("day-two-wind");
+var dayTwoHumidity = document.getElementById("day-two-humidity");
+var dayThreeTemperature = document.getElementById("day-three-temperature");
+var dayThreeWind = document.getElementById("day-three-wind");
+var dayThreeHumidity = document.getElementById("day-three-humidity");
+var dayFourTemperature = document.getElementById("day-four-temperature");
+var dayFourWind = document.getElementById("day-four-wind");
+var dayFourHumidity = document.getElementById("day-four-humidity");
+var dayFiveTemperature = document.getElementById("day-five-temperature");
+var dayFiveWind = document.getElementById("day-five-wind");
+var dayFiveHumidity = document.getElementById("day-five-humidity");
 
 
 function getUserRepos(city) {
@@ -29,6 +41,18 @@ function getUserRepos(city) {
             dailyTemperature.textContent = data.daily[0].temp.day
             dailyWind.textContent = data.daily[0].wind_speed
             dailyHumidity.textContent = data.daily[0].humidity
+            dayTwoTemperature.textContent = data.daily[1].temp.day
+            dayTwoWind.textContent = data.daily[1].wind_speed
+            dayTwoHumidity.textContent = data.daily[1].humidity
+            dayThreeTemperature.textContent = data.daily[2].temp.day
+            dayThreeWind.textContent = data.daily[2].wind_speed
+            dayThreeHumidity.textContent = data.daily[2].humidity
+            dayFourTemperature.textContent = data.daily[3].temp.day
+            dayFourWind.textContent = data.daily[3].wind_speed
+            dayFourHumidity.textContent = data.daily[3].humidity
+            dayFiveTemperature.textContent = data.daily[4].temp.day
+            dayFiveWind.textContent = data.daily[4].wind_speed
+            dayFiveHumidity.textContent = data.daily[4].humidity
         });
 }
 
@@ -41,6 +65,7 @@ function searchForm (event) {
 }
 
 submitButton.addEventListener("click", searchForm);
+
 
 
 // somehow define latitude and longitude so I don't need to input it manually
