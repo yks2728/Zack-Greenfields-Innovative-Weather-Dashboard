@@ -8,30 +8,16 @@ var currentHumidity = document.getElementById("current-humidity");
 var currentUVI = document.getElementById("current-UVI");
 
 
+const {coord} = data;
 
+let lat = coord.lat;
+let lon = coord.lon;
 
-if (localStorage.getItem("current-city")) {
-    currentCity.textContent = localStorage.getItem("current-city");
-}
-
-
-function getUserRepos(city) {
-    console.log("getUserRepos");
-    fetch("api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
-        .then(response=> response.json())
-        .then(data=> {
-            console.log(data);
-            currentCity.textContent = data.timezone
-            currentTemperature.textContent = data.current.temp
-            currentHumidity.textContent = data.current.humidity
-            currentUVI.textContent = data.current.uvi
-        })
-}
-getUserRepos();
+weather(lat, lon);
 
 function getUserRepos() {
     console.log("getUserRepos");
-    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=41.85&lon=-87.65&exclude=alert&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
+    fetch("https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
         .then(response=> response.json())
         .then(data=> {
             console.log(data);
@@ -42,14 +28,13 @@ function getUserRepos() {
         })
 }
 getUserRepos();
-
-
 
 
 function searchForm (event) {
     event.preventDefault();
 
     var inputSearch = cityInputEl.value.trim();
+        
         console.log(inputSearch);
         getUserRepos(inputSearch)
 }
