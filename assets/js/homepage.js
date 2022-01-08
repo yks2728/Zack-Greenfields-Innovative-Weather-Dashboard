@@ -6,41 +6,43 @@ var currentCity = document.getElementById("current-city");
 var currentTemperature = document.getElementById("current-temperature");
 var currentHumidity = document.getElementById("current-humidity");
 var currentUVI = document.getElementById("current-UVI");
+var dailyTemperature = document.getElementById("daily-temperature");
+var dailyWind = document.getElementById("daily-wind");
+var dailyHumidity = document.getElementById("daily-humidity");
 
 
-if (localStorage.getItem("current-city")) {
-    currentCity.textContent = localStorage.getItem("current-city");
-}
-
-
-function getUserRepos() {
+function getUserRepos(city) {
     console.log("getUserRepos");
-    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=41.85&lon=-87.65&exclude=alert&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
         .then(response=> response.json())
         .then(data=> {
             console.log(data);
-            currentCity.textContent = data.timezone
-            currentTemperature.textContent = data.current.temp
-            currentHumidity.textContent = data.current.humidity
-            currentUVI.textContent = data.current.uvi
+            currentCity.textContent = data.name
+            currentTemperature.textContent = data.main.temp
+            currentHumidity.textContent = data.main.humidity
         })
 }
-getUserRepos();
+
+    function getUserRepos() {
+        console.log("getUserRepos");
+        fetch("https://api.openweathermap.org/data/2.5/onecall?lat=40.71&lon=-74.00&exclude=minutely,hourly,alerts&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
+            .then(response=> response.json())
+            .then(data=> {
+                console.log(data);
+                currentUVI.textContent = data.current.uvi
+                dailyTemperature.textContent = data.daily[0].temp.day
+                dailyWind.textContent = data.daily[0].wind_speed
+                dailyHumidity = data.daily[0].humidity
+            })
+    }
 
 
 function searchForm (event) {
     event.preventDefault();
 
     var inputSearch = cityInputEl.value.trim();
-        
         console.log(inputSearch);
         getUserRepos(inputSearch)
 }
-
-$(".btn").on("click", function (event) {
-    var innerText = event.target.parentElement.childNodes[3].innerText
-    var eventId = event.target.parentElement.childNodes[3].id
-    localStorage.setItem(eventId, JSON.stringify(innerText));
-  });
 
 submitButton.addEventListener("click", searchForm);
