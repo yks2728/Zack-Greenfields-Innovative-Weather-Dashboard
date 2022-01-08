@@ -20,22 +20,17 @@ function getUserRepos(city) {
             currentCity.textContent = data.name
             currentTemperature.textContent = data.main.temp
             currentHumidity.textContent = data.main.humidity
-        })
+        });
+    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=40.71&lon=-74.00&exclude=minutely,hourly,alerts&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
+        .then(response=> response.json())
+        .then(data=> {
+            console.log(data);
+            currentUVI.textContent = data.current.uvi
+            dailyTemperature.textContent = data.daily[0].temp.day
+            dailyWind.textContent = data.daily[0].wind_speed
+            dailyHumidity.textContent = data.daily[0].humidity
+        });
 }
-
-    function getUserRepos() {
-        console.log("getUserRepos");
-        fetch("https://api.openweathermap.org/data/2.5/onecall?lat=40.71&lon=-74.00&exclude=minutely,hourly,alerts&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
-            .then(response=> response.json())
-            .then(data=> {
-                console.log(data);
-                currentUVI.textContent = data.current.uvi
-                dailyTemperature.textContent = data.daily[0].temp.day
-                dailyWind.textContent = data.daily[0].wind_speed
-                dailyHumidity = data.daily[0].humidity
-            })
-    }
-
 
 function searchForm (event) {
     event.preventDefault();
@@ -46,3 +41,8 @@ function searchForm (event) {
 }
 
 submitButton.addEventListener("click", searchForm);
+
+
+// somehow define latitude and longitude so I don't need to input it manually
+// be able to fill up all the daily categories
+// local storage
