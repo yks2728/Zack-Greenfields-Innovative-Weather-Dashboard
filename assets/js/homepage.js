@@ -23,6 +23,7 @@ var dayFiveWind = document.getElementById("day-five-wind");
 var dayFiveHumidity = document.getElementById("day-five-humidity");
 
 
+
 function getUserRepos(city) {
     console.log("getUserRepos");
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
@@ -32,29 +33,34 @@ function getUserRepos(city) {
             currentCity.textContent = data.name
             currentTemperature.textContent = data.main.temp
             currentHumidity.textContent = data.main.humidity
-        });
-    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=40.71&lon=-74.00&exclude=minutely,hourly,alerts&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
-        .then(response=> response.json())
-        .then(data=> {
-            console.log(data);
-            currentUVI.textContent = data.current.uvi
-            dailyTemperature.textContent = data.daily[0].temp.day
-            dailyWind.textContent = data.daily[0].wind_speed
-            dailyHumidity.textContent = data.daily[0].humidity
-            dayTwoTemperature.textContent = data.daily[1].temp.day
-            dayTwoWind.textContent = data.daily[1].wind_speed
-            dayTwoHumidity.textContent = data.daily[1].humidity
-            dayThreeTemperature.textContent = data.daily[2].temp.day
-            dayThreeWind.textContent = data.daily[2].wind_speed
-            dayThreeHumidity.textContent = data.daily[2].humidity
-            dayFourTemperature.textContent = data.daily[3].temp.day
-            dayFourWind.textContent = data.daily[3].wind_speed
-            dayFourHumidity.textContent = data.daily[3].humidity
-            dayFiveTemperature.textContent = data.daily[4].temp.day
-            dayFiveWind.textContent = data.daily[4].wind_speed
-            dayFiveHumidity.textContent = data.daily[4].humidity
-        });
-}
+            var lat = data.coord.lat;
+            var lon = data.coord.lon;
+
+            fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
+            .then(response=> response.json())
+            .then(data=> {
+                console.log(data);
+                currentUVI.textContent = data.current.uvi
+                dailyTemperature.textContent = data.daily[0].temp.day
+                dailyWind.textContent = data.daily[0].wind_speed
+                dailyHumidity.textContent = data.daily[0].humidity
+                dayTwoTemperature.textContent = data.daily[1].temp.day
+                dayTwoWind.textContent = data.daily[1].wind_speed
+                dayTwoHumidity.textContent = data.daily[1].humidity
+                dayThreeTemperature.textContent = data.daily[2].temp.day
+                dayThreeWind.textContent = data.daily[2].wind_speed
+                dayThreeHumidity.textContent = data.daily[2].humidity
+                dayFourTemperature.textContent = data.daily[3].temp.day
+                dayFourWind.textContent = data.daily[3].wind_speed
+                dayFourHumidity.textContent = data.daily[3].humidity
+                dayFiveTemperature.textContent = data.daily[4].temp.day
+                dayFiveWind.textContent = data.daily[4].wind_speed
+                dayFiveHumidity.textContent = data.daily[4].humidity
+        });       
+    })
+}        
+    
+        
 
 function searchForm (event) {
     event.preventDefault();
