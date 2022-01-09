@@ -2,6 +2,7 @@ var key = '6843ce9c306c263f9b4534c69341093d';
 var selectedCities = [];
 var cityInputEl = document.getElementById("city");
 var submitButton = document.getElementById("btn");
+var currentDate = document.getElementById("current-date");
 var currentCity = document.getElementById("current-city");
 var currentTemperature = document.getElementById("current-temperature");
 var currentHumidity = document.getElementById("current-humidity");
@@ -58,7 +59,7 @@ function getUserRepos(city) {
         });       
     })
 }        
-    
+
         
 
 function searchForm (event) {
