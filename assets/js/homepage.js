@@ -2,14 +2,13 @@ var key = '6843ce9c306c263f9b4534c69341093d';
 var selectedCities = [];
 var cityInputEl = document.getElementById("city");
 var submitButton = document.getElementById("btn");
-var currentDate = document.getElementById("current-date");
 var currentCity = document.getElementById("current-city");
 var currentTemperature = document.getElementById("current-temperature");
 var currentHumidity = document.getElementById("current-humidity");
 var currentUVI = document.getElementById("current-UVI");
-var dailyTemperature = document.getElementById("daily-temperature");
-var dailyWind = document.getElementById("daily-wind");
-var dailyHumidity = document.getElementById("daily-humidity");
+var dayOneTemperature = document.getElementById("day-one-temperature");
+var dayOneWind = document.getElementById("day-one-wind");
+var dayOneHumidity = document.getElementById("day-one-humidity");
 var dayTwoTemperature = document.getElementById("day-two-temperature");
 var dayTwoWind = document.getElementById("day-two-wind");
 var dayTwoHumidity = document.getElementById("day-two-humidity");
@@ -22,6 +21,8 @@ var dayFourHumidity = document.getElementById("day-four-humidity");
 var dayFiveTemperature = document.getElementById("day-five-temperature");
 var dayFiveWind = document.getElementById("day-five-wind");
 var dayFiveHumidity = document.getElementById("day-five-humidity");
+
+
 
 
 function getUserRepos(city) {
@@ -41,9 +42,9 @@ function getUserRepos(city) {
             .then(data=> {
                 console.log(data);
                 currentUVI.textContent = data.current.uvi
-                dailyTemperature.textContent = data.daily[0].temp.day
-                dailyWind.textContent = data.daily[0].wind_speed
-                dailyHumidity.textContent = data.daily[0].humidity
+                dayOneTemperature.textContent = data.daily[0].temp.day
+                dayOneWind.textContent = data.daily[0].wind_speed
+                dayOneHumidity.textContent = data.daily[0].humidity
                 dayTwoTemperature.textContent = data.daily[1].temp.day
                 dayTwoWind.textContent = data.daily[1].wind_speed
                 dayTwoHumidity.textContent = data.daily[1].humidity
