@@ -23,7 +23,6 @@ var dayFiveWind = document.getElementById("day-five-wind");
 var dayFiveHumidity = document.getElementById("day-five-humidity");
 
 
-
 function getUserRepos(city) {
     console.log("getUserRepos");
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=6843ce9c306c263f9b4534c69341093d&units=imperial")
@@ -68,12 +67,12 @@ function searchForm (event) {
     var inputSearch = cityInputEl.value.trim();
         console.log(inputSearch);
         getUserRepos(inputSearch)
+      
 }
+
+
 
 submitButton.addEventListener("click", searchForm);
 
 
-
-// somehow define latitude and longitude so I don't need to input it manually
-// be able to fill up all the daily categories
 // local storage
