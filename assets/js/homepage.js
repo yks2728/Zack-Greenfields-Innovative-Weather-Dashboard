@@ -1,5 +1,4 @@
 var key = '6843ce9c306c263f9b4534c69341093d';
-var selectedCities = [];
 var cityInputEl = document.getElementById("city");
 var submitButton = document.getElementById("btn");
 var currentCity = document.getElementById("current-city");
