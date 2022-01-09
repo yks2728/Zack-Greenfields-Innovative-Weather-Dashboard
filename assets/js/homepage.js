@@ -72,7 +72,5 @@ function searchForm (event) {
 
 
 
+
 submitButton.addEventListener("click", searchForm);
-
-
-// local storage
