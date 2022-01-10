@@ -20,6 +20,7 @@ var dayFourHumidity = document.getElementById("day-four-humidity");
 var dayFiveTemperature = document.getElementById("day-five-temperature");
 var dayFiveWind = document.getElementById("day-five-wind");
 var dayFiveHumidity = document.getElementById("day-five-humidity");
+var cityIdCounter = 0;
 
 
 
@@ -60,18 +61,24 @@ function getUserRepos(city) {
     })
 }        
 
-        
+
+const cityNames =[];
+cityNames.Id = cityIdCounter++
+
+
+// zach steuer helped me figure out array for local storage
 
 function searchForm (event) {
     event.preventDefault();
-
     var inputSearch = cityInputEl.value.trim();
-        console.log(inputSearch);
-        getUserRepos(inputSearch)
-      
+    cityNames.push(inputSearch);
+    console.log(cityNames);
+    localStorage.setItem("cities", cityNames);
+        // console.log(inputSearch);
+        getUserRepos(inputSearch);
+
 }
 
-
-
+// end credit
 
 submitButton.addEventListener("click", searchForm);
